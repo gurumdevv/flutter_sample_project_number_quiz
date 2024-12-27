@@ -28,6 +28,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String quiz = "";
 
+  @override
+  void initState() {
+    //iniState에서는 직접 async/await를 사용할 수 없음 -> 함수를 만들어서 함수를 호출해야함
+    super.initState();
+    // StatefulWidget의 라이프사이클 메서드 중 하나로,
+    // 위젯이 처음 생성될 때 호출됨.
+    // 초기화 작업이 필요한 경우 이 메서드에서 수행됨.
+    getQuiz();
+  }
+
+  ///퀴즈 가져오기
+  void getQuiz() async {
+    String trivia = await getNumberTrivia();
+    //setState 안에서는 async/await를 사용할 수 없음
+    setState(() {
+      quiz = trivia;
+    });
+  }
+
   Future<String> getNumberTrivia() async {
     Response result = await Dio().get('http://numbersapi.com/random/trivia');
     String trivia = result.data;
@@ -71,13 +90,9 @@ class _HomePageState extends State<HomePage> {
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(Colors.white),
                 ),
-                onPressed: () async {
+                onPressed: () {
                   // New Quiz 클릭시 퀴즈 가져오기
-                  String trivia = await getNumberTrivia();
-                  //setState 안에서는 async/await를 사용할 수 없음
-                  setState(() {
-                    quiz = trivia;
-                  });
+                  getQuiz();
                 },
               ),
             ),
