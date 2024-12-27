@@ -1,16 +1,6 @@
-# number_quiz
+# Flutter Sample Project: Number Quiz
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- async/await/Future을 사용해서 비동기 처리 구현
+- Dio를 사용해서 REST API를 활용한 데이터 수신 기능 구현
+- StatefulWidget의 Lifecycle을 활용한 기능 구현
+- SafeArea 사용
